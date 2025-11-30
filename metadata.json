@@ -1,0 +1,5 @@
+{
+  "name": "Solar Explorer",
+  "description": "An interactive 3D tour of the solar system featuring 360-degree planet visualizations and AI-powered insights.",
+  "requestFramePermissions": []
+}
