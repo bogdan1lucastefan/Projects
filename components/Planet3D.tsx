@@ -218,7 +218,7 @@ const Planet3D: React.FC<Planet3DProps> = ({
   };
 
   const getLightPosition = () => {
-    const normalized = (sunPosition + 180) % 360;
+    const normalized = (sunPosition + 179) % 360;
     const percent = (normalized / 360) * 200 - 50; 
     return `${percent}%`;
   };
@@ -401,9 +401,9 @@ const Planet3D: React.FC<Planet3DProps> = ({
   let overlayOpacity = 0.2;
 
   if (isTerraformedMars) {
-    textureFilter = 'grayscale(0.4) contrast(1.1) brightness(1.0)';
-    tintOpacity = 0.4;
-    overlayOpacity = 0.3;
+    textureFilter = 'grayscale(0) contrast(1.1) brightness(1.1)'; // No grayscale to let natural colors show
+    tintOpacity = 0.05; // Reduced from 0.15 to minimal
+    overlayOpacity = 0.05; // Reduced from 0.1 to minimal
   } else if (isOriginalMars) {
     // Make Mars very red and distinct
     textureFilter = 'contrast(1.2) saturate(1.2) brightness(1.1)';
@@ -435,7 +435,7 @@ const Planet3D: React.FC<Planet3DProps> = ({
             
             {/* 1. Outer Atmosphere / Exosphere (Glow) */}
             <div 
-              className="absolute inset-0 rounded-full transition-all duration-300 ease-out pointer-events-none"
+              className="absolute inset-0 rounded-full transition-all duration-100 ease-out pointer-events-none"
               style={{
                  boxShadow: `
                    0 0 ${planetSize * 0.05}px rgba(${rgb}, ${0.8 + sunIntensity * 0.2}), 
@@ -485,7 +485,7 @@ const Planet3D: React.FC<Planet3DProps> = ({
                              backgroundImage: `url(${overlayTexture})`,
                              backgroundSize: '200% 100%',
                              backgroundRepeat: 'repeat-x',
-                             filter: 'grayscale(0.4) contrast(1.1) brightness(0.9)',
+                             filter: 'grayscale(0) contrast(1.1) brightness(1.1)',
                            }}
                          />
                       </div>
@@ -501,7 +501,7 @@ const Planet3D: React.FC<Planet3DProps> = ({
                              backgroundImage: `url(${overlayTexture})`,
                              backgroundSize: '200% 100%',
                              backgroundRepeat: 'repeat-x',
-                             filter: 'grayscale(0.4) contrast(1.1) brightness(0.9)',
+                             filter: 'grayscale(0) contrast(1.1) brightness(1.1)',
                            }}
                          />
                       </div>
@@ -556,15 +556,15 @@ const Planet3D: React.FC<Planet3DProps> = ({
 
             {/* 4. Dynamic Lighting */}
             <div 
-              className="absolute inset-0 rounded-full transition-all duration-300 ease-out pointer-events-none"
+              className="absolute inset-0 rounded-full transition-all duration-100 ease-out pointer-events-none"
               style={{
-                background: `radial-gradient(circle at ${lightX} 50%, transparent 40%, rgba(0,0,0,0.85) 65%, #000000 100%)`,
+                background: `radial-gradient(circle at ${lightX} 50%, transparent 40%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.85) 100%)`,
               }}
             />
             
             {/* 5. Specular Highlight */}
             <div 
-              className="absolute inset-0 rounded-full transition-all duration-300 ease-out pointer-events-none mix-blend-add"
+              className="absolute inset-0 rounded-full transition-all duration-100 ease-out pointer-events-none mix-blend-add"
               style={{
                  background: `radial-gradient(circle at ${lightX} 50%, rgba(255,255,255,${0.5 * sunIntensity}) 0%, transparent 30%)`,
               }}
@@ -572,8 +572,8 @@ const Planet3D: React.FC<Planet3DProps> = ({
             
             {/* 6. Night Side Tint */}
             <div 
-              className="absolute inset-0 rounded-full bg-black transition-opacity duration-300 pointer-events-none mix-blend-multiply"
-              style={{ opacity: shadowOpacity * 0.95 }} 
+              className="absolute inset-0 rounded-full bg-black transition-opacity duration-100 pointer-events-none mix-blend-multiply"
+              style={{ opacity: shadowOpacity * 0.75 }} 
             />
           </div>
 

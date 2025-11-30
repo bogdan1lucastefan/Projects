@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const [selectedPlanetIndex, setSelectedPlanetIndex] = useState(0); 
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionClass, setTransitionClass] = useState('');
-  const [sunPosition, setSunPosition] = useState(180); // Default to Noon (180 degrees)
+  const [sunPosition, setSunPosition] = useState(150); // Default to angled sun (150 degrees)
   // Store the planet ID along with the timestamp to ensure missions are specific to a planet
   const [lastLaunch, setLastLaunch] = useState<{planetId: string, timestamp: number} | null>(null);
   
@@ -76,7 +76,7 @@ const App: React.FC = () => {
         **The Future**
         The terraforming process is ongoing. It will take centuries to fully oxygenate the atmosphere, but the most difficult step—warming the planet—has been achieved. Mars is no longer a dead world; it is a living, breathing frontier.`,
         textureUrl: 'https://raw.githubusercontent.com/yuriyy/solar-system/master/public/img/earth.jpg', // Reuse Earth texture for "Earth-like"
-        color: '#4ADE80', // Green accent
+        color: '#2DD4BF', // Green Teal (Teal-400)
         tempDay: 15,
         tempNight: -10
       };

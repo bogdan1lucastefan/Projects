@@ -124,7 +124,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({
     // Don't animate if already there
     if (Math.abs(distance) < 0.1) return;
 
-    const duration = 1000; // 1 second transition
+    const duration = 1200; // Increased to 1200ms for slower, smoother transition
     const startTime = performance.now();
 
     const tick = (currentTime: number) => {
