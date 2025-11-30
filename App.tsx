@@ -147,7 +147,7 @@ const App: React.FC = () => {
     if (Math.random() > 0.5) {
       setIsMarsTerraformed(true);
       setViewingTerraformed(true); // Switch to terraformed view automatically on success
-      setFeedbackMessage({ type: 'success', text: 'Atmosphere thickening... Water flowing!' });
+      setFeedbackMessage({ type: 'success', text: 'Amazing! The mission was a success!' });
     } else {
       setFeedbackMessage({ type: 'failure', text: 'Nukes insufficient. Polar caps remain frozen.' });
     }
@@ -209,7 +209,7 @@ const App: React.FC = () => {
               : 'bg-red-500/20 border-red-400 text-red-100 shadow-red-900/50'}
           `}>
             <span className="text-3xl">
-              {feedbackMessage.type === 'success' ? '🎉' : '💥'}
+              {feedbackMessage.type === 'success' ? '🌟' : '💥'}
             </span>
             <div className="flex flex-col">
               <span className={`text-xl font-bold uppercase tracking-wider ${
